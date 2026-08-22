@@ -1,0 +1,140 @@
+\chapter{Python Data Types}
+
+\section{Why This Matters}
+In Machine Learning, your data will take many forms: numerical arrays, text labels, boolean masks, and configurations. Understanding the core Python data types is essential because applying the wrong operation to the wrong type (e.g., trying to add a string to an integer) will crash your pipeline. Knowing how to check types and understand "truthiness" will help you debug faster.
+
+\section{Explanation}
+
+\subsection{1. Numeric Types}
+\begin{itemize}
+    \item \textbf{\texttt{int}}: Whole numbers. Python handles arbitrarily large integers automatically.
+    \item \textbf{\texttt{float}}: Decimal numbers. Standard for ML model weights and probabilities.
+    \item \textbf{\texttt{complex}}: Complex numbers (e.g., \texttt{3 + 4j}). Rarely used in standard ML, but important for signal processing.
+\end{itemize}
+
+\subsection{2. Text and Binary Types}
+\begin{itemize}
+    \item \textbf{\texttt{str}}: Text data, enclosed in quotes. Immutable.
+    \item \textbf{\texttt{bytes} / \texttt{bytearray}}: Raw byte data. Useful for reading images, audio, or serialized ML models.
+\end{itemize}
+
+\subsection{3. Boolean and None}
+\begin{itemize}
+    \item \textbf{\texttt{bool}}: \texttt{True} or \texttt{False}. Used for logic and masking.
+    \item \textbf{\texttt{None}}: A special constant representing the absence of a value (similar to \texttt{null} in other languages).
+\end{itemize}
+
+\subsection{4. Collection Types (Brief intro)}
+\begin{itemize}
+    \item \textbf{\texttt{list}}: Ordered, mutable sequence \texttt{[1, 2, 3]}.
+    \item \textbf{\texttt{tuple}}: Ordered, immutable sequence \texttt{(1, 2, 3)}.
+    \item \textbf{\texttt{set}}: Unordered collection of unique items \texttt{\{1, 2, 3\}}.
+    \item \textbf{\texttt{dict}}: Key-value pairs \texttt{\{"a": 1, "b": 2\}}.
+\end{itemize}
+
+\subsection{5. \texttt{type()} and \texttt{isinstance()}}
+\begin{itemize}
+    \item \texttt{type(x)} returns the exact type of \texttt{x}.
+    \item \texttt{isinstance(x, type)} checks if \texttt{x} is an instance of a specific type (or a tuple of types). \textbf{This is the preferred, professional way to check types.}
+\end{itemize}
+
+\subsection{6. Truthiness}
+In Python, every object can be evaluated as a boolean.
+\begin{itemize}
+    \item \textbf{Falsy}: \texttt{0}, \texttt{0.0}, \texttt{""} (empty string), \texttt{None}, \texttt{[]}, \texttt{\{\}}, \texttt{()}, \texttt{set()}.
+    \item \textbf{Truthy}: Almost everything else!
+\end{itemize}
+
+\subsection{7. Equality (\texttt{==}) vs Identity (\texttt{is})}
+\begin{itemize}
+    \item \texttt{==} checks if the \textbf{values} are equal.
+    \item \texttt{is} checks if they are the \textbf{exact same object in memory}.
+\end{itemize}
+
+\section{Examples}
+
+\subsection{Level 1 — Basic (Type Checking)}
+\begin{lstlisting}
+x = 3.14
+print(type(x))                  # Output: <class 'float'>
+print(isinstance(x, float))     # Output: True
+print(isinstance(x, (int, float))) # Output: True (checks if int OR float)
+\end{lstlisting}
+
+\subsection{Level 2 — Intermediate (Truthiness)}
+\begin{lstlisting}
+empty_list = []
+if empty_list:
+    print("This won't print because empty lists are falsy.")
+
+if not empty_list:
+    print("This WILL print!")  # Preferred way to check if a list is empty
+\end{lstlisting}
+
+\subsection{Level 3 — Hard (Equality vs Identity with None)}
+\begin{lstlisting}
+a = None
+b = None
+
+# Because None is a singleton (only one exists in memory), BOTH are True.
+print(a == b)  # True
+print(a is b)  # True
+
+list_1 = [1, 2]
+list_2 = [1, 2]
+print(list_1 == list_2) # True, they have the same values
+print(list_1 is list_2) # False, they are different objects in memory!
+\end{lstlisting}
+
+\section{Common Mistakes}
+\warning{
+1. Using \texttt{type(x) == list} instead of \texttt{isinstance(x, list)}. \texttt{isinstance} gracefully handles inheritance (subclasses), which is crucial when working with ML libraries that create custom object types. \\
+2. Checking if a list is empty using \texttt{if len(my\_list) == 0:}. The Pythonic way is simply \texttt{if not my\_list:}.
+}
+
+\mlconnection{When reading a CSV dataset using Pandas, missing values often start as \texttt{None} or \texttt{NaN} (Not a Number, which is a float). Knowing how to detect and handle these null types, and understanding how booleans act as masks (e.g., selecting all rows where age > 30), is the absolute foundation of data preprocessing.}
+
+\section{Exercises}
+
+\textbf{Exercise 1: Truthiness and Types}
+Predict the output of the following code snippet:
+
+\begin{lstlisting}
+data = ""
+result = 100
+
+if data:
+    result = result + 50
+else:
+    result = result - 20
+
+print(result)
+\end{lstlisting}
+\textit{Solution: The output is 80. An empty string evaluates to False in Python, triggering the else block.}
+
+\vspace{1em}
+\textbf{Exercise 2: Debugging and Best Practices}
+The following function tries to check if the input is a string and if it is not empty. However, it uses poor Python practices. Rewrite it using \texttt{isinstance()} and Pythonic truthiness.
+
+\begin{lstlisting}
+def process_text(text):
+    if type(text) == str:
+        if len(text) > 0:
+            print("Processing:", text)
+        else:
+            print("Empty string provided.")
+    else:
+        print("Error: Input is not a string.")
+\end{lstlisting}
+
+\textbf{Refactored Solution:}
+\begin{lstlisting}
+def process_text(text):
+    if isinstance(text, str):
+        if text:
+            print("Processing:", text)
+        else:
+            print("Empty string provided.")
+    else:
+        print("Error: Input is not a string.")
+\end{lstlisting}

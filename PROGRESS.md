@@ -5,12 +5,13 @@ Detailed status of the current learning journey.
 ---
 
 ### 🎯 Current Status
-- **Current Topic**: 03. Data Types
-- **Status**: Waiting for user to complete exercises.
+- **Current Topic**: 04. Strings and Manipulation
+- **Status**: Learning concepts.
 
 ### ✅ Completed Topics
 - 01. Python Syntax and Indentation
 - 02. Variables and Object Identity
+- 03. Data Types
 
 ### ⚠️ Weak Topics / Needs Revision
 *(None)*
