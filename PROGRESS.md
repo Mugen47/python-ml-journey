@@ -5,13 +5,14 @@ Detailed status of the current learning journey.
 ---
 
 ### 🎯 Current Status
-- **Current Topic**: 04. Strings and Manipulation
+- **Current Topic**: 05. Lists
 - **Status**: Learning concepts.
 
 ### ✅ Completed Topics
 - 01. Python Syntax and Indentation
 - 02. Variables and Object Identity
 - 03. Data Types
+- 04. Strings and Manipulation
 
 ### ⚠️ Weak Topics / Needs Revision
 *(None)*

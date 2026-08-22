@@ -1,0 +1,92 @@
+\chapter{Strings and Manipulation}
+
+\section{Why This Matters}
+In Machine Learning and Data Science, a massive portion of data is unstructured text (e.g., medical records, tweets, reviews, log files). To perform Natural Language Processing (NLP) or basic data cleaning, you must know how to manipulate strings efficiently.
+
+\section{Explanation}
+A string (\texttt{str}) in Python is a sequence of characters used to represent text. 
+
+\important{\textbf{Immutability:} Strings are immutable, meaning once created, they cannot be changed in place. Any operation that modifies a string actually creates a brand new string.}
+
+\subsection{1. Indexing and Slicing}
+Because strings are sequences, you can access individual characters using an index (starting at 0) and slice them to extract substrings using \texttt{[start:stop:step]}.
+
+\begin{lstlisting}
+text = "Machine Learning"
+
+print(text[0])   # 'M'
+print(text[-1])  # 'g' (negative indices count from the end)
+
+# Slicing [start:stop] (Stop is exclusive)
+print(text[0:7]) # 'Machine'
+print(text[:7])  # 'Machine'
+print(text[8:])  # 'Learning'
+\end{lstlisting}
+
+\subsection{2. Essential String Methods}
+\begin{itemize}
+    \item \texttt{.lower()} / \texttt{.upper()}: Changes case.
+    \item \texttt{.strip()}: Removes leading and trailing whitespace.
+    \item \texttt{.split(delimiter)}: Splits the string into a list.
+    \item \texttt{.replace(old, new)}: Replaces substrings.
+\end{itemize}
+
+\begin{lstlisting}
+# Cleaning dirty data by chaining methods
+raw_data = "   user@email.com   \n"
+clean_data = raw_data.strip().lower()
+print(clean_data)  # 'user@email.com'
+\end{lstlisting}
+
+\subsection{3. F-Strings and The Format Mini-Language}
+F-strings (formatted string literals) are the modern way to inject variables into strings. When inside an f-string's curly braces \texttt{\{\}}, anything to the \textbf{right} of the colon \texttt{:} is the formatting rule.
+
+\begin{itemize}
+    \item \textbf{\texttt{\{epoch:02d\}}} (Integer Padding): Pads the integer with zeros until it is at least 2 characters wide.
+    \item \textbf{\texttt{\{loss:.3f\}}} (Float Rounding): Rounds a floating point number to exactly 3 decimal places.
+    \item \textbf{\texttt{\{accuracy:.1\%\}}} (Percentage Conversion): Multiplies the float by 100, rounds to 1 decimal place, and appends a \texttt{\%} sign.
+\end{itemize}
+
+\begin{lstlisting}
+epoch = 5
+loss = 0.03456
+acc = 0.892
+
+print(f"[Epoch {epoch:02d}] Loss: {loss:.3f} | Acc: {acc:.1%}")
+# Output: [Epoch 05] Loss: 0.035 | Acc: 89.2%
+\end{lstlisting}
+
+\section{Common Mistakes}
+\warning{
+Trying to change a string character directly like \texttt{text[0] = 'X'} will throw a \texttt{TypeError}. Also, forgetting that \texttt{.strip()} does not remove spaces \textit{inside} the string, only at the edges.
+}
+
+\mlconnection{When preparing text data for an ML model (like a text classifier or an LLM), you usually build a \textbf{preprocessing pipeline}. This involves converting all text to lowercase, removing punctuation via \texttt{.replace()}, and splitting sentences into individual words via \texttt{.split()}.}
+
+\section{Solutions to Exercises}
+
+\textbf{Exercise 1: String Slicing}
+\begin{lstlisting}
+file_path = "/data/images/dataset_2024.csv"
+print(file_path[-16:])
+\end{lstlisting}
+\textit{Solution: Negative indexing ensures we get exactly the last 16 characters regardless of what the parent directories are named.}
+
+\vspace{1em}
+\textbf{Exercise 2: Data Cleaning}
+\begin{lstlisting}
+raw_tweet = "   Python is AWESOME for Machine Learning!!!   \n"
+clean_tweet = raw_tweet.strip().lower().replace("!!!", "")
+print(clean_tweet)
+\end{lstlisting}
+\textit{Solution: Chaining methods works perfectly here. \texttt{python is awesome for machine learning}}
+
+\vspace{1em}
+\textbf{Exercise 3: F-Strings and Formatting}
+\begin{lstlisting}
+epoch = 5
+loss = 0.0345678
+val_accuracy = 0.892
+print(f"[Epoch {epoch:02d}] Training Loss: {loss:.3f} | Validation Acc: {val_accuracy:.1%}")
+\end{lstlisting}
+\textit{Solution: \texttt{[Epoch 05] Training Loss: 0.035 | Validation Acc: 89.2\%}}

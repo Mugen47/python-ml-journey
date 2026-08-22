@@ -8,8 +8,8 @@ This roadmap outlines the complete learning journey. A topic is only marked comp
 - [x] **01.** Python Syntax and Indentation
 - [x] **02.** Variables and Object Identity
 - [x] **03.** Data Types (Numeric, Sequences, Truthiness)
-- [ ] **04.** Strings and Manipulation *(IN PROGRESS)*
-- [ ] **05.** Lists
+- [x] **04.** Strings and Manipulation
+- [ ] **05.** Lists *(IN PROGRESS)*
 - [ ] **06.** Tuples
 - [ ] **07.** Sets
 - [ ] **08.** Dictionaries
