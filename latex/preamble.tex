@@ -1,0 +1,43 @@
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{geometry}
+
+\geometry{a4paper, margin=1in}
+
+% Colors
+\definecolor{primary}{RGB}{40, 60, 100}
+\definecolor{accent}{RGB}{200, 50, 50}
+\definecolor{codegray}{rgb}{0.95,0.95,0.95}
+\definecolor{keyword}{rgb}{0.1,0.1,0.8}
+\definecolor{string}{rgb}{0.8,0.1,0.1}
+\definecolor{comment}{rgb}{0.4,0.4,0.4}
+
+% Listings config for Python
+\lstset{
+    language=Python,
+    backgroundcolor=\color{codegray},
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    keywordstyle=\color{keyword}\bfseries,
+    stringstyle=\color{string},
+    commentstyle=\color{comment}\itshape,
+    frame=single,
+    rulecolor=\color{lightgray},
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    stepnumber=1,
+    numbersep=5pt,
+    showstringspaces=false
+}
+
+% Simple Callout Boxes using fcolorbox and fbox (to avoid mdframed dependencies)
+\newcommand{\important}[1]{\vspace{10pt}\noindent\fcolorbox{red}{red!5}{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\textbf{\textcolor{red}{IMPORTANT:}}\\ #1}}\vspace{10pt}}
+\newcommand{\warning}[1]{\vspace{10pt}\noindent\fcolorbox{orange}{orange!5}{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\textbf{\textcolor{orange}{WARNING:}}\\ #1}}\vspace{10pt}}
+\newcommand{\tip}[1]{\vspace{10pt}\noindent\fcolorbox{green!60!black}{green!5}{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\textbf{\textcolor{green!60!black}{TIP:}}\\ #1}}\vspace{10pt}}
+\newcommand{\mlconnection}[1]{\vspace{10pt}\noindent\fcolorbox{blue}{blue!5}{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\textbf{\textcolor{blue}{ML CONNECTION:}}\\ #1}}\vspace{10pt}}
+\newcommand{\deepdive}[1]{\vspace{10pt}\noindent\fcolorbox{purple}{purple!5}{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\textbf{\textcolor{purple}{DEEP DIVE:}}\\ #1}}\vspace{10pt}}

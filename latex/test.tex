@@ -1,0 +1,42 @@
+\documentclass[11pt,a4paper]{article}
+
+\input{preamble}
+
+\title{LaTeX Test Document}
+\author{Test Author}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+This is a simple test document to verify the \LaTeX{} compilation pipeline.
+
+\section{Mathematics}
+Here is a fundamental equation in ML:
+\[ z = \frac{x-\mu}{\sigma} \]
+
+\section{Python Code}
+\begin{lstlisting}
+def calculate_z_score(x, mu, sigma):
+    """Calculates the standard score."""
+    return (x - mu) / sigma
+\end{lstlisting}
+
+\section{Callout Boxes}
+\mlconnection{The $z$-score is used for standardization in preprocessing pipelines to ensure features have zero mean and unit variance.}
+
+\section{Table Test}
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Feature} & \textbf{Mean} & \textbf{Std Dev} \\
+\hline
+Age & 35.5 & 12.1 \\
+Income & \$65,000 & \$15,000 \\
+\hline
+\end{tabular}
+\end{center}
+
+\end{document}
