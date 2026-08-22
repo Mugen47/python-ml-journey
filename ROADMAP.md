@@ -1,54 +1,58 @@
-# Comprehensive Python-for-ML Curriculum
+# 🗺️ Comprehensive Python-for-ML Curriculum
 
-## Phase 1 — Python Fundamentals
-- [ ] 01. Python Syntax and Indentation
-- [ ] 02. Variables
-- [ ] 03. Data Types
-- [ ] 04. Strings
-- [ ] 05. Lists
-- [ ] 06. Tuples
-- [ ] 07. Sets
-- [ ] 08. Dictionaries
+This roadmap outlines the complete learning journey. A topic is only marked completed `[x]` after rigorous testing and demonstrated mastery.
 
-## Phase 2 — Core Python
-- [ ] 09. Control Flow
-- [ ] 10. Functions
-- [ ] 11. Arguments
-- [ ] 12. Comprehensions
-- [ ] 13. Built-ins
+---
 
-## Phase 3 — Advanced Python
-- [ ] 14. Iterables
-- [ ] 15. Iterators
-- [ ] 16. Generators
-- [ ] 17. Scope
-- [ ] 18. *args / **kwargs
-- [ ] 19. Exceptions
-- [ ] 20. Files
-- [ ] 21. CSV / JSON
-- [ ] 22. pathlib
+### 🟢 Phase 1 — Python Fundamentals
+- [x] **01.** Python Syntax and Indentation
+- [x] **02.** Variables and Object Identity
+- [x] **03.** Data Types (Numeric, Sequences, Truthiness) *(IN PROGRESS)*
+- [ ] **04.** Strings and Manipulation
+- [ ] **05.** Lists
+- [ ] **06.** Tuples
+- [ ] **07.** Sets
+- [ ] **08.** Dictionaries
 
-## Phase 4 — Software Engineering
-- [ ] 23. Modules
-- [ ] 24. Packages
-- [ ] 25. OOP
-- [ ] 26. Dunder Methods
-- [ ] 27. Decorators
-- [ ] 28. Dataclasses
-- [ ] 29. Type Hints
-- [ ] 30. Debugging
-- [ ] 31. Testing
-- [ ] 32. Logging
+### 🔵 Phase 2 — Core Python
+- [ ] **09.** Control Flow (If, For, While)
+- [ ] **10.** Functions (Definitions, Returns)
+- [ ] **11.** Arguments (Positional, Keyword, Default)
+- [ ] **12.** Comprehensions (List, Dict, Set)
+- [ ] **13.** Built-ins (map, filter, zip, enumerate)
 
-## Phase 5 — Environment & ML Prep
-- [ ] 33. pip
-- [ ] 34. Virtual Environments
-- [ ] 35. Jupyter
+### 🟣 Phase 3 — Advanced Python
+- [ ] **14.** Iterables
+- [ ] **15.** Iterators
+- [ ] **16.** Generators (yield)
+- [ ] **17.** Scope (LEGB Rule)
+- [ ] **18.** `*args` and `**kwargs`
+- [ ] **19.** Exceptions & Error Handling
+- [ ] **20.** Files (I/O, Context Managers)
+- [ ] **21.** CSV & JSON Parsing
+- [ ] **22.** Pathlib (Modern Path Manipulation)
 
-## Phase 6 — ML Ecosystem
-- [ ] 36. NumPy
-- [ ] 37. Pandas
-- [ ] 38. Matplotlib
-- [ ] 39. Seaborn
-- [ ] 40. Regex
-- [ ] 41. Python for ML Engineering
+### 🟠 Phase 4 — Software Engineering
+- [ ] **23.** Modules
+- [ ] **24.** Packages
+- [ ] **25.** Object-Oriented Programming (OOP)
+- [ ] **26.** Dunder (Magic) Methods
+- [ ] **27.** Decorators
+- [ ] **28.** Dataclasses
+- [ ] **29.** Type Hints (PEP 484)
+- [ ] **30.** Debugging (`pdb`)
+- [ ] **31.** Testing (`pytest`)
+- [ ] **32.** Logging
+
+### 🟡 Phase 5 — Environment & ML Prep
+- [ ] **33.** Package Management (`pip`)
+- [ ] **34.** Virtual Environments (`venv`)
+- [ ] **35.** Jupyter Ecosystem
+
+### 🔴 Phase 6 — ML Ecosystem
+- [ ] **36.** NumPy (Vectors, Matrices, Broadcasting)
+- [ ] **37.** Pandas (DataFrames, Series, Aggregation)
+- [ ] **38.** Matplotlib (Plotting Fundamentals)
+- [ ] **39.** Seaborn (Statistical Visualization)
+- [ ] **40.** Regular Expressions (Regex)
+- [ ] **41.** Python for ML Engineering (Pipelines)
