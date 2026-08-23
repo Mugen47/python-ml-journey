@@ -15,8 +15,8 @@ This roadmap outlines the complete learning journey. A topic is only marked comp
 - [x] **08.** Dictionaries
 
 ### 🔵 Phase 2 — Core Python
-- [ ] **09.** Control Flow (If, For, While) *(IN PROGRESS)*
-- [ ] **10.** Functions (Definitions, Returns)
+- [x] **09.** Control Flow (If, For, While)
+- [ ] **10.** Functions (Definitions, Returns) *(IN PROGRESS)*
 - [ ] **11.** Arguments (Positional, Keyword, Default)
 - [ ] **12.** Comprehensions (List, Dict, Set)
 - [ ] **13.** Built-ins (map, filter, zip, enumerate)

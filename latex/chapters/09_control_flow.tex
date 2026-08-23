@@ -1,0 +1,91 @@
+\part{Core Python}
+
+\chapter{Control Flow}
+
+\section{Why This Matters}
+Control flow is how you dictate the "path" your code takes. Until now, our code has executed strictly from top to bottom, line by line. Control flow allows your code to make \textbf{decisions} (\texttt{if}), \textbf{repeat} tasks (\texttt{for}, \texttt{while}), and skip lines of code entirely based on logic.
+
+In Machine Learning, control flow is used everywhere:
+\begin{itemize}
+    \item \textbf{\texttt{if} statements:} "If the model's accuracy drops below 80\%, stop training."
+    \item \textbf{\texttt{for} loops:} "For every image in the dataset, resize it to 256x256."
+    \item \textbf{\texttt{while} loops:} "While the loss function is still decreasing, keep training."
+\end{itemize}
+
+\section{The \texttt{if} Statement}
+Python uses \texttt{if}, \texttt{elif} (else if), and \texttt{else}. It relies entirely on \textbf{indentation} to know what code belongs inside the block.
+
+\begin{lstlisting}
+accuracy = 0.85
+
+if accuracy > 0.90:
+    print("Deploy the model!")
+elif accuracy > 0.80:
+    print("Keep training.")
+else:
+    print("Failing.")
+\end{lstlisting}
+\textit{Note: You can chain logical operators like \texttt{and}, \texttt{or}, and \texttt{not}.}
+
+\section{The \texttt{for} Loop}
+A \texttt{for} loop in Python iterates directly over the items in a collection (like a list, tuple, string, or dictionary).
+\begin{lstlisting}
+# Iterating over a list
+loss_values = [0.5, 0.4, 0.2]
+for loss in loss_values:
+    print(f"Current loss: {loss}")
+
+# Generating number sequences
+for epoch in range(5):
+    print(f"Training epoch {epoch}")
+\end{lstlisting}
+
+\section{The \texttt{while} Loop}
+A \texttt{while} loop runs forever as long as its condition evaluates to \texttt{True}. You MUST ensure the condition eventually becomes \texttt{False}, or you will create an \textbf{infinite loop}.
+\begin{lstlisting}
+battery = 100
+while battery > 0:
+    battery -= 20 
+\end{lstlisting}
+
+\section{Loop Control}
+\begin{itemize}
+    \item \textbf{\texttt{break}}: Completely shatters the loop. The loop ends immediately.
+    \item \textbf{\texttt{continue}}: Skips the rest of the \textit{current} iteration and instantly jumps to the \textit{next} iteration.
+\end{itemize}
+
+\mlconnection{When you build neural networks using PyTorch from scratch, the core of your program is quite literally just a massive \texttt{for} loop (iterating over epochs), nested inside another \texttt{for} loop (iterating over batches of data)!}
+
+\section{Solutions to Exercises}
+
+\textbf{Exercise 1: The Classifier}
+\begin{lstlisting}
+if age < 18:
+    print("Minor")
+elif age >= 18 and age <= 64:
+    print("Adult")
+else:
+    print("Senior")
+\end{lstlisting}
+
+\vspace{1em}
+\textbf{Exercise 2: The Data Cleaner}
+\begin{lstlisting}
+readings = [12.5, 14.1, None, 11.2, None, 15.0]
+for result in readings:
+    if result is None:
+        continue
+    print(result)
+\end{lstlisting}
+
+\vspace{1em}
+\textbf{Exercise 3: Early Stopping}
+\begin{lstlisting}
+loss = 1.0
+epoch = 0
+while True:
+    epoch += 1
+    loss -= 0.1
+    if loss < 0.3 or epoch == 5:
+        break
+\end{lstlisting}
