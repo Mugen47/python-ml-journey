@@ -5,7 +5,7 @@ Detailed status of the current learning journey.
 ---
 
 ### 🎯 Current Status
-- **Current Topic**: 05. Lists
+- **Current Topic**: 06. Tuples
 - **Status**: Learning concepts.
 
 ### ✅ Completed Topics
@@ -13,6 +13,7 @@ Detailed status of the current learning journey.
 - 02. Variables and Object Identity
 - 03. Data Types
 - 04. Strings and Manipulation
+- 05. Lists
 
 ### ⚠️ Weak Topics / Needs Revision
 *(None)*

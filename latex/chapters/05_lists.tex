@@ -1,0 +1,98 @@
+\chapter{Lists}
+
+\section{Why This Matters}
+In Machine Learning, lists are the absolute foundation for storing sequences of data. Before you learn advanced numerical arrays (like NumPy), you will use standard Python lists to store model predictions, sequences of tokens in NLP, or rows of data from a CSV file.
+
+\section{Explanation}
+A list in Python is an ordered, \textbf{mutable} (changeable) collection of items. Lists can contain items of different data types, including other lists. They are created using square brackets \texttt{[]}.
+
+Because they are ordered sequences, you can index and slice them exactly like Strings. But unlike Strings (which are immutable), you can modify lists \textit{in place}.
+
+\subsection{1. Indexing, Slicing, and Mutating}
+\begin{lstlisting}
+fruits = ["apple", "banana", "cherry"]
+
+# Indexing and Slicing (Same as strings!)
+print(fruits[0])    # 'apple'
+print(fruits[-1])   # 'cherry'
+print(fruits[:2])   # ['apple', 'banana']
+
+# Mutating (Changing items in place)
+fruits[1] = "blueberry" 
+print(fruits)       # ['apple', 'blueberry', 'cherry']
+\end{lstlisting}
+
+\subsection{2. Essential List Methods}
+\begin{itemize}
+    \item \texttt{.append(item)}: Adds an item to the \textbf{end} of the list.
+    \item \texttt{.insert(index, item)}: Inserts an item at a specific position.
+    \item \texttt{.pop(index)}: Removes and returns the item at the index (defaults to the last item if no index is given).
+    \item \texttt{.remove(value)}: Removes the \textit{first} occurrence of a specific value.
+    \item \texttt{.extend(list2)}: Adds all elements of a second list to the end of the first.
+    \item \texttt{.sort()}: Sorts the list in place (modifies the original list).
+\end{itemize}
+
+\subsection{3. Nested Lists (2D Data)}
+Lists can contain other lists. This is how we represent 2D data (like a spreadsheet or an image) in pure Python.
+\begin{lstlisting}
+matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+# To get the number 6:
+# First get the middle row (index 1), then the last item (index -1)
+print(matrix[1][-1]) # 6
+\end{lstlisting}
+
+\section{Common Mistakes: The Aliasing Trap}
+\warning{
+This is the most common mistake made by Python beginners. Because lists are mutable, variables simply \textbf{point} to the list in memory. 
+
+If you write \texttt{b = a}, you did not copy the list. You created a second variable pointing to the same list. Modifying \texttt{b} will modify \texttt{a}.
+}
+
+To make an actual independent copy, use the \texttt{.copy()} method or slice it \texttt{[:]}:
+\begin{lstlisting}
+a = [1, 2, 3]
+c = a.copy()
+c.append(5)
+print(a)       # Still [1, 2, 3], 'c' is independent.
+\end{lstlisting}
+
+\mlconnection{When building neural networks from scratch, the architecture is often defined as a list of layers. Furthermore, when reading raw data before passing it to a library like Pandas, it usually starts as a "list of lists" where each inner list represents a single row in a dataset.}
+
+\section{Solutions to Exercises}
+
+\textbf{Exercise 1: The Queue}
+\begin{lstlisting}
+queue = ["img1.png", "img2.png"]
+queue.append("img3.png")
+print(queue.pop(0))
+\end{lstlisting}
+\textit{Solution: \texttt{.append("img3.png")} safely adds the new image to the very end of the list. \texttt{.pop(0)} removes the element at index 0 (the first element) and returns it.}
+
+\vspace{1em}
+\textbf{Exercise 2: Nested Data Extraction}
+\begin{lstlisting}
+batch = [
+    [ [0, 0], [0, 0] ],   
+    [ [1, 1], [1, 1] ],   
+    [ [2, 2], [2, 9] ]    
+]
+print(batch[2][1][1])
+\end{lstlisting}
+\textit{Solution: \texttt{batch[2]} selects the 3rd image. \texttt{[1]} selects the 2nd row \texttt{[2, 9]}. \texttt{[1]} selects the 2nd element \texttt{9}.}
+
+\vspace{1em}
+\textbf{Exercise 3: The Copy Trap}
+\begin{lstlisting}
+original_data = [100, 200, 300]
+normalized = original_data.copy()
+normalized.remove(300)
+
+print("Original:", original_data)
+print("Normalized:", normalized)
+\end{lstlisting}
+\textit{Solution: By using \texttt{.copy()}, Python creates a brand new list in memory. Now \texttt{normalized} points to this new list, while \texttt{original\_data} points to the old one.}

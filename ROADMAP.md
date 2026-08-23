@@ -9,8 +9,8 @@ This roadmap outlines the complete learning journey. A topic is only marked comp
 - [x] **02.** Variables and Object Identity
 - [x] **03.** Data Types (Numeric, Sequences, Truthiness)
 - [x] **04.** Strings and Manipulation
-- [ ] **05.** Lists *(IN PROGRESS)*
-- [ ] **06.** Tuples
+- [x] **05.** Lists
+- [ ] **06.** Tuples *(IN PROGRESS)*
 - [ ] **07.** Sets
 - [ ] **08.** Dictionaries
 
