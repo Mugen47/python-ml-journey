@@ -1,0 +1,76 @@
+\chapter{Arguments}
+
+\section{Why This Matters}
+When you pass data into a function, Python needs to know \textit{which} parameter gets \textit{which} piece of data. Understanding Positional, Keyword, and Default arguments allows you to write incredibly flexible ML functions.
+
+\section{Positional vs. Keyword Arguments}
+By default, arguments are mapped to parameters based on their \textbf{position} (order).
+Instead of relying on order, you can explicitly state which parameter gets which value by using the parameter's name. This is called a \textbf{keyword argument}.
+
+\begin{lstlisting}
+def describe_model(name, layers):
+    print(f"Model: {name}, Layers: {layers}")
+
+# Positional (Order matters)
+describe_model("ResNet", 50) 
+
+# Keyword (Order doesn't matter)
+describe_model(layers=50, name="ResNet") 
+\end{lstlisting}
+\textit{Rule: If you mix positional and keyword arguments, positional arguments \textbf{MUST} come first!}
+
+\section{Default Arguments}
+You can provide a \textbf{default value} in the function definition. If the user doesn't provide an argument for it, Python uses the default.
+\begin{lstlisting}
+def train_model(model_name, epochs=10):
+    print(f"Training {model_name} for {epochs} epochs.")
+
+train_model("YOLOv8")              # Uses default (10)
+train_model("YOLOv8", epochs=100)  # Overrides default (100)
+\end{lstlisting}
+\textit{Rule: Parameters with default values MUST come \textbf{after} parameters without default values.}
+
+\section{\texttt{*args} and \texttt{**kwargs} (The Advanced Magic)}
+Sometimes you don't know how many arguments the user will pass. 
+\begin{itemize}
+    \item \texttt{*args}: Allows you to pass any number of \textbf{positional} arguments. They are packed into a \textbf{Tuple}.
+    \item \texttt{**kwargs}: Allows you to pass any number of \textbf{keyword} arguments. They are packed into a \textbf{Dictionary}.
+\end{itemize}
+
+\begin{lstlisting}
+def calculate_total_loss(*losses):
+    return sum(losses)
+print(calculate_total_loss(0.5, 0.2, 0.1)) # 0.8
+\end{lstlisting}
+
+\mlconnection{When you use a library like \texttt{scikit-learn} or \texttt{TensorFlow}, functions have dozens of parameters. They rely heavily on \textbf{Default Arguments} (so you don't have to specify all 20 settings every time) and \textbf{Keyword Arguments} (so you know exactly what you are modifying). Wrappers heavily use \texttt{**kwargs} to pass arbitrary parameters down to lower-level functions.}
+
+\section{Solutions to Exercises}
+
+\textbf{Exercise 1: The Configurator}
+\begin{lstlisting}
+def setup_server(host, port=8080, debug=False):
+    print(f"Server starting on {host}:{port} | Debug mode: {debug}")
+
+setup_server("localhost")
+setup_server("192.168.1.1", 9000)
+setup_server("production.com", debug=True)
+\end{lstlisting}
+
+\vspace{1em}
+\textbf{Exercise 2: Keyword Enforcement}
+\begin{lstlisting}
+def train_network(learning_rate, batch_size, epochs, momentum):
+    print(f"LR: {learning_rate}, Batch: {batch_size}, Epochs: {epochs}, Momentum: {momentum}")
+
+train_network(learning_rate=0.001, batch_size=64, epochs=100, momentum=0.9)
+\end{lstlisting}
+
+\vspace{1em}
+\textbf{Exercise 3: The \texttt{*args} Aggregator}
+\begin{lstlisting}
+def average_scores(*args):
+    return sum(args) / len(args)
+
+print(average_scores(85, 90, 95, 100)) # 92.5
+\end{lstlisting}

@@ -5,7 +5,7 @@ Detailed status of the current learning journey.
 ---
 
 ### 🎯 Current Status
-- **Current Topic**: 11. Arguments (Positional, Keyword, Default)
+- **Current Topic**: 12. Comprehensions (List, Dict, Set)
 - **Status**: Learning concepts.
 
 ### ✅ Completed Topics
@@ -19,6 +19,7 @@ Detailed status of the current learning journey.
 - 08. Dictionaries
 - 09. Control Flow
 - 10. Functions
+- 11. Arguments
 
 ### ⚠️ Weak Topics / Needs Revision
 *(None)*
