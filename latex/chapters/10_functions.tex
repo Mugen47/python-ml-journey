@@ -1,0 +1,79 @@
+\chapter{Functions}
+
+\section{Why This Matters}
+A function is a reusable block of code that performs a specific task. You "define" it once, and then you can "call" it as many times as you want. This prevents copying and pasting code, adhering to the \textbf{DRY} (Don't Repeat Yourself) principle.
+
+In Machine Learning, functions are used to:
+\begin{itemize}
+    \item Load data (\texttt{load\_dataset()})
+    \item Preprocess data (\texttt{normalize\_image(image)})
+    \item Train models (\texttt{train\_step(model, data, labels)})
+\end{itemize}
+
+\section{Explanation}
+You define a function using the \texttt{def} keyword, followed by the function name, parentheses \texttt{()}, and a colon \texttt{:}. 
+
+\subsection{1. Inputs (Parameters vs. Arguments)}
+The variables listed in the definition are called \textbf{parameters}. The actual data you pass in when calling the function are called \textbf{arguments}.
+
+\begin{lstlisting}
+def greet(name):          # 'name' is the parameter
+    print(f"Hello, {name}!")
+
+greet("Alice")            # 'Alice' is the argument
+\end{lstlisting}
+
+\subsection{2. Outputs (The \texttt{return} Statement)}
+If you want a function to calculate a value and \textit{hand it back} to you, you must use the \texttt{return} keyword. 
+
+\warning{Once a function hits a \texttt{return} statement, it exits immediately. No code below the \texttt{return} will run!}
+
+\begin{lstlisting}
+def multiply(a, b):
+    result = a * b
+    return result
+    print("This will never print!") # Unreachable code
+
+answer = multiply(5, 10)
+\end{lstlisting}
+
+\subsection{3. Returning Multiple Values}
+In Python, you can return multiple values separated by commas. Under the hood, Python secretly packages them into a \textbf{Tuple}! You can use Tuple Unpacking to catch them.
+
+\begin{lstlisting}
+def get_model_stats():
+    accuracy = 0.95
+    loss = 0.05
+    return accuracy, loss  # Secretly a tuple!
+
+acc, lss = get_model_stats()
+\end{lstlisting}
+
+\mlconnection{When you write a custom neural network layer or an evaluation script, you will always wrap it in a function. For example, a standard evaluation function in PyTorch returns multiple values like \texttt{final\_accuracy} and \texttt{final\_loss}.}
+
+\section{Solutions to Exercises}
+
+\textbf{Exercise 1: The Basic Calculator}
+\begin{lstlisting}
+def subtract(x, y):
+    return x - y
+print(subtract(10, 3))
+\end{lstlisting}
+
+\vspace{1em}
+\textbf{Exercise 2: The Data Normalizer}
+\begin{lstlisting}
+def normalize_pixel(pixel_value):
+    return pixel_value / 255.0
+print(normalize_pixel(128))
+\end{lstlisting}
+
+\vspace{1em}
+\textbf{Exercise 3: Early Return Logic}
+\begin{lstlisting}
+def check_access(role):
+    if role == "admin":
+        return True
+    return False
+\end{lstlisting}
+\textit{Solution: Notice the lack of an \texttt{else} block! Because the \texttt{return} statement instantly exits the function, if the role is "admin", it returns True and dies. If it is NOT "admin", the if block is skipped, and it hits the \texttt{return False} at the bottom. This is called "Early Return".}
