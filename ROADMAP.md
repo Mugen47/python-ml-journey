@@ -10,8 +10,8 @@ This roadmap outlines the complete learning journey. A topic is only marked comp
 - [x] **03.** Data Types (Numeric, Sequences, Truthiness)
 - [x] **04.** Strings and Manipulation
 - [x] **05.** Lists
-- [ ] **06.** Tuples *(IN PROGRESS)*
-- [ ] **07.** Sets
+- [x] **06.** Tuples
+- [ ] **07.** Sets *(IN PROGRESS)*
 - [ ] **08.** Dictionaries
 
 ### 🔵 Phase 2 — Core Python

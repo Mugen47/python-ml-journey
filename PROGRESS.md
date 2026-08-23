@@ -5,7 +5,7 @@ Detailed status of the current learning journey.
 ---
 
 ### 🎯 Current Status
-- **Current Topic**: 06. Tuples
+- **Current Topic**: 07. Sets
 - **Status**: Learning concepts.
 
 ### ✅ Completed Topics
@@ -14,6 +14,7 @@ Detailed status of the current learning journey.
 - 03. Data Types
 - 04. Strings and Manipulation
 - 05. Lists
+- 06. Tuples
 
 ### ⚠️ Weak Topics / Needs Revision
 *(None)*

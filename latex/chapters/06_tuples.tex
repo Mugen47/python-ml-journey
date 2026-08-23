@@ -1,0 +1,80 @@
+\chapter{Tuples}
+
+\section{Why This Matters}
+If a tuple is just a list you can't change, why use it?
+\begin{enumerate}
+    \item \textbf{Safety:} In Machine Learning, you often have data that should \textit{never} change during execution (like the shape of an image matrix: \texttt{(256, 256, 3)}). Using a tuple guarantees that a stray line of code won't accidentally mutate this critical data.
+    \item \textbf{Speed and Memory:} Because tuples are immutable, Python optimizes them. They take up slightly less memory and are faster to iterate through than lists.
+    \item \textbf{Dictionary Keys:} Lists cannot be used as keys in a dictionary (because they can change), but tuples can.
+\end{enumerate}
+
+\section{Explanation}
+A tuple in Python is an ordered, \textbf{immutable} (unchangeable) collection of items. Tuples are created using parentheses \texttt{()} (though the parentheses are actually optional; it's the commas \texttt{,} that define a tuple). Because they are ordered, you index and slice them just like lists and strings.
+
+\subsection{1. Syntax and Core Methods}
+\begin{lstlisting}
+dimensions = (1920, 1080)
+hyperparameters = 0.01, 32, 64  # Parentheses are optional!
+
+print(dimensions[0])       # 1920
+# dimensions[0] = 800  <--- TypeError!
+\end{lstlisting}
+
+Because they are immutable, tuples only have \textbf{two} methods: \texttt{.count(value)} and \texttt{.index(value)}.
+
+\subsection{2. Unpacking}
+A very Pythonic feature: you can assign multiple variables at once from a tuple.
+\begin{lstlisting}
+model_config = ("Adam", 0.001, 100)
+optimizer, learning_rate, epochs = model_config
+
+print(learning_rate) # 0.001
+\end{lstlisting}
+
+\section{Common Mistakes}
+
+\subsection{The Single Element Tuple Trap}
+If you want to create a tuple with exactly ONE element, you \textbf{must} include a trailing comma. Parentheses alone are just treated as mathematical grouping!
+\begin{lstlisting}
+math_variable = (5)
+print(type(math_variable))  # <class 'int'>
+
+single_tuple = (5,)
+print(type(single_tuple))   # <class 'tuple'>
+\end{lstlisting}
+
+\subsection{Nested Mutability}
+A tuple itself cannot be changed. However, if a tuple \textit{contains} a mutable object (like a list), you CAN mutate the list inside the tuple!
+\begin{lstlisting}
+complex_tuple = (1, 2, [3, 4])
+complex_tuple[2].append(5)
+print(complex_tuple) # (1, 2, [3, 4, 5])
+\end{lstlisting}
+\textit{Why? Because the tuple is still pointing to the EXACT same list object in memory. The tuple didn't change its pointers; the list itself changed.}
+
+\mlconnection{When you use a library like NumPy or TensorFlow, the shape of a multi-dimensional array or tensor is ALWAYS returned as a tuple (e.g., \texttt{(batch\_size, height, width, channels)}). Furthermore, many ML functions return multiple values (e.g., \texttt{return loss, accuracy}). When a function returns multiple values separated by commas, it is secretly returning a tuple!}
+
+\section{Solutions to Exercises}
+
+\textbf{Exercise 1: Unpacking}
+\begin{lstlisting}
+results = ("ResNet50", 0.92, 14.5)
+name, acc, time = results
+\end{lstlisting}
+\textit{Solution: This unpacks the tuple into three separate variables seamlessly.}
+
+\vspace{1em}
+\textbf{Exercise 2: The Tuple Trap}
+\begin{lstlisting}
+lr_tuple = (0.01,)
+\end{lstlisting}
+\textit{Solution: Without the comma, Python evaluates \texttt{(0.01)} as a standard float.}
+
+\vspace{1em}
+\textbf{Exercise 3: Swapping Variables}
+\begin{lstlisting}
+x = 10
+y = 20
+x, y = y, x
+\end{lstlisting}
+\textit{Solution: This is the famous Pythonic variable swap. The right side packs a tuple \texttt{(20, 10)}, and the left side immediately unpacks it, bypassing the need for a temporary variable.}
