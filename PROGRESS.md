@@ -5,7 +5,7 @@ Detailed status of the current learning journey.
 ---
 
 ### 🎯 Current Status
-- **Current Topic**: 08. Dictionaries
+- **Current Topic**: 09. Control Flow (If, For, While)
 - **Status**: Learning concepts.
 
 ### ✅ Completed Topics
@@ -16,6 +16,7 @@ Detailed status of the current learning journey.
 - 05. Lists
 - 06. Tuples
 - 07. Sets
+- 08. Dictionaries
 
 ### ⚠️ Weak Topics / Needs Revision
 *(None)*

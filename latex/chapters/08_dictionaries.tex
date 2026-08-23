@@ -1,0 +1,92 @@
+\chapter{Dictionaries}
+
+\section{Why This Matters}
+In Machine Learning, dictionaries are the absolute backbone of data structure formatting.
+\begin{itemize}
+    \item \textbf{JSON Data:} APIs and datasets often return data in JSON format, which maps perfectly 1-to-1 with Python dictionaries.
+    \item \textbf{Hyperparameters:} When training an ML model, you will often pass in a dictionary of configuration settings (e.g., \texttt{\{"learning\_rate": 0.01, "batch\_size": 32\}}).
+    \item \textbf{Model Weights:} PyTorch and TensorFlow store neural network layers and weights inside dictionaries.
+\end{itemize}
+
+\section{Explanation}
+A dictionary (\texttt{dict}) in Python is an unordered, \textbf{mutable} collection of \textbf{key-value pairs}. It is incredibly fast for looking up values based on a unique key. 
+
+\textbf{Keys MUST be unique and immutable} (like strings, integers, or tuples).
+\textbf{Values can be absolutely anything}.
+
+\subsection{1. Syntax and Core Methods}
+\begin{lstlisting}
+student = {
+    "name": "Alice",
+    "age": 28,
+    "courses": ["Math", "CompSci"]
+}
+
+# Modifying or Adding a new key-value pair
+student["age"] = 29
+\end{lstlisting}
+
+\begin{itemize}
+    \item \texttt{.get(key, default)}: Safely gets a value without crashing if it doesn't exist.
+    \item \texttt{.keys()}: Returns all keys.
+    \item \texttt{.values()}: Returns all values.
+    \item \texttt{.items()}: Returns all \texttt{(key, value)} tuples.
+    \item \texttt{.update(dict2)}: Merges another dictionary into this one.
+\end{itemize}
+
+\subsection{2. Safe Lookups}
+Accessing a key that doesn't exist using brackets \texttt{[]} will crash your program with a \texttt{KeyError}. Always use \texttt{.get()} if you aren't 100\% sure the key exists.
+\begin{lstlisting}
+config = {"theme": "dark"}
+# print(config["font_size"]) <--- KeyError! Program crashes.
+
+font = config.get("font_size", 12) # Safe
+\end{lstlisting}
+
+\subsection{3. Iterating through a Dictionary}
+To loop through a dictionary effectively, use the \texttt{.items()} method, which unpacks the key and value simultaneously.
+\begin{lstlisting}
+model_metrics = {"accuracy": 0.95, "loss": 0.02}
+
+for metric_name, value in model_metrics.items():
+    print(f"{metric_name}: {value}")
+\end{lstlisting}
+
+\subsection{4. Nested Dictionaries}
+When working with JSON data, you will often deal with dictionaries inside dictionaries.
+\begin{lstlisting}
+dataset = {
+    "user_101": {
+        "name": "Bob",
+        "purchases": [15.99, 20.00]
+    }
+}
+print(dataset["user_101"]["purchases"][0]) # 15.99
+\end{lstlisting}
+
+\mlconnection{When you use Pandas, creating a DataFrame (a table of data) from scratch is often done using a dictionary where the keys are the column names and the values are lists representing the rows.}
+
+\section{Solutions to Exercises}
+
+\textbf{Exercise 1: Safe Access}
+\begin{lstlisting}
+user_profile = {"name": "Sarah", "email": "sarah@example.com"}
+phone = user_profile.get("phone", "No phone provided")
+\end{lstlisting}
+\textit{Solution: \texttt{.get()} checks if the key "phone" exists. It safely returns the fallback string instead of crashing.}
+
+\vspace{1em}
+\textbf{Exercise 2: Dictionary Updating}
+\begin{lstlisting}
+default_config = {"lr": 0.01, "batch_size": 32, "epochs": 100}
+user_config = {"batch_size": 64, "optimizer": "Adam"}
+default_config.update(user_config)
+\end{lstlisting}
+\textit{Solution: The \texttt{.update()} method merges \texttt{user\_config} into \texttt{default\_config}, overwriting existing keys and adding new ones.}
+
+\vspace{1em}
+\textbf{Exercise 3: Nested Extraction}
+\begin{lstlisting}
+print(api_response["data"]["forecast"][1]["conditions"])
+\end{lstlisting}
+\textit{Solution: Chained indexing goes from outer dictionary \texttt{["data"]} to inner list \texttt{["forecast"]}, to index \texttt{[1]}, to key \texttt{["conditions"]}.}
