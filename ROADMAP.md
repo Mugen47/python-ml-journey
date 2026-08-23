@@ -11,8 +11,8 @@ This roadmap outlines the complete learning journey. A topic is only marked comp
 - [x] **04.** Strings and Manipulation
 - [x] **05.** Lists
 - [x] **06.** Tuples
-- [ ] **07.** Sets *(IN PROGRESS)*
-- [ ] **08.** Dictionaries
+- [x] **07.** Sets
+- [ ] **08.** Dictionaries *(IN PROGRESS)*
 
 ### 🔵 Phase 2 — Core Python
 - [ ] **09.** Control Flow (If, For, While)

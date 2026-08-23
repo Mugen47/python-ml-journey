@@ -5,7 +5,7 @@ Detailed status of the current learning journey.
 ---
 
 ### 🎯 Current Status
-- **Current Topic**: 07. Sets
+- **Current Topic**: 08. Dictionaries
 - **Status**: Learning concepts.
 
 ### ✅ Completed Topics
@@ -15,6 +15,7 @@ Detailed status of the current learning journey.
 - 04. Strings and Manipulation
 - 05. Lists
 - 06. Tuples
+- 07. Sets
 
 ### ⚠️ Weak Topics / Needs Revision
 *(None)*

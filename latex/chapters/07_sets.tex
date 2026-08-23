@@ -1,0 +1,71 @@
+\chapter{Sets}
+
+\section{Why This Matters}
+Sets are incredibly powerful for two main reasons:
+\begin{enumerate}
+    \item \textbf{Deduplication:} The fastest way to remove duplicates from a list is to convert it into a set.
+    \item \textbf{Membership Testing:} Because sets use a data structure called a "hash table" under the hood, checking if an item exists in a set (e.g., \texttt{if "apple" in my\_set:}) is almost instantly fast, even if the set has millions of items. Doing this with a list is incredibly slow.
+\end{enumerate}
+
+\section{Explanation}
+A set in Python is an unordered, mutable collection of \textbf{unique} items. You can think of it exactly like a mathematical set. Because they are unordered, \textbf{they do not support indexing or slicing} (you cannot do \texttt{my\_set[0]}).
+
+\subsection{1. Syntax and Core Methods}
+\begin{lstlisting}
+unique_numbers = {1, 2, 3, 4, 4, 4, 5}
+print(unique_numbers)  # {1, 2, 3, 4, 5} -> Duplicates removed!
+
+# Creating an empty set
+empty_set = set() # MUST use set(), because {} creates a dict!
+\end{lstlisting}
+
+\begin{itemize}
+    \item \texttt{.add(item)}: Adds an item to the set.
+    \item \texttt{.remove(item)}: Removes an item (throws an error if it doesn't exist).
+    \item \texttt{.discard(item)}: Removes an item (does NOTHING if it doesn't exist - safer!).
+\end{itemize}
+
+\subsection{2. Mathematical Operations}
+Sets shine when you need to compare two groups of data.
+\begin{lstlisting}
+group_a = {"apple", "banana", "cherry"}
+group_b = {"cherry", "date", "elderberry"}
+
+print(group_a | group_b) # Union: {'apple', 'banana', 'cherry', 'date', 'elderberry'}
+print(group_a & group_b) # Intersection: {'cherry'}
+print(group_a - group_b) # Difference: {'apple', 'banana'}
+\end{lstlisting}
+
+\subsection{3. The Hashable Requirement}
+Sets can only store \textbf{immutable} (hashable) items. This means you can put strings, integers, and tuples inside a set, but you CANNOT put a list or a dictionary inside a set!
+\begin{lstlisting}
+valid_set = {1, "hello", (10, 20)} # Works perfectly
+# invalid_set = {1, "hello", [10, 20]}  <--- TypeError!
+\end{lstlisting}
+
+\mlconnection{In Natural Language Processing (NLP), you often need to find the "vocabulary" of a document---the unique words used. If a document has 10,000 words, you simply run \texttt{vocab = set(words\_list)} to instantly get the unique words. Sets are also used to quickly identify overlapping features between datasets.}
+
+\section{Solutions to Exercises}
+
+\textbf{Exercise 1: Deduplication}
+\begin{lstlisting}
+emails = ["a@a.com", "b@b.com", "a@a.com", "c@c.com", "b@b.com"]
+unique_emails = set(emails)
+print(len(unique_emails)) # 3
+\end{lstlisting}
+
+\vspace{1em}
+\textbf{Exercise 2: Intersection}
+\begin{lstlisting}
+user_likes = {"The Matrix", "Inception", "Interstellar"}
+friend_likes = {"Interstellar", "The Prestige", "The Matrix"}
+print(user_likes & friend_likes)
+\end{lstlisting}
+
+\vspace{1em}
+\textbf{Exercise 3: The Empty Set Trap}
+\begin{lstlisting}
+unique_ips = set()
+unique_ips.add("192.168.1.1")
+\end{lstlisting}
+\textit{Solution: \texttt{\{\}} evaluates to an empty dictionary, which does not have an \texttt{.add()} method. You must use \texttt{set()}.}
